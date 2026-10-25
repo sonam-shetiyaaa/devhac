@@ -1,0 +1,11 @@
+{
+  "name": "triprescue-root",
+  "version": "1.0.0",
+  "description": "TripRescue AI - Autonomous Travel Disruption Recovery Platform",
+  "scripts": {
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm run dev",
+    "start": "cd backend && npm start",
+    "test": "cd backend && npm test"
+  }
+}

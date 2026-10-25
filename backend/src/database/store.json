@@ -1,0 +1,825 @@
+{
+  "trips": [
+    {
+      "id": "trip-1792930687952",
+      "title": "Hyderabad to Varanasi Spiritual Tour",
+      "traveller_name": "Karthik Rao",
+      "origin": "Hyderabad (HYD)",
+      "destination": "Varanasi (VNS)",
+      "start_date": "2026-11-28T07:00:00",
+      "end_date": "2026-12-01T20:00:00",
+      "status": "RECOVERED",
+      "created_at": "2026-10-25T12:18:07.952Z",
+      "updated_at": "2026-10-25T12:18:07.952Z"
+    },
+    {
+      "id": "trip-blr-jai-01",
+      "title": "Bengaluru to Jaipur Cultural Conference & Heritage Tour",
+      "traveller_name": "Rohan Mehta",
+      "origin": "Bengaluru (BLR)",
+      "destination": "Jaipur (JAI)",
+      "start_date": "2026-11-15T07:00:00",
+      "end_date": "2026-11-18T20:00:00",
+      "status": "DISRUPTED",
+      "created_at": "2026-10-25T10:00:00",
+      "updated_at": "2026-10-25T10:15:00"
+    },
+    {
+      "id": "trip-bom-goa-02",
+      "title": "Mumbai to Goa Coastal Review & Leisure Retreat",
+      "traveller_name": "Ananya Iyer",
+      "origin": "Mumbai (BOM)",
+      "destination": "Goa (GOI)",
+      "start_date": "2026-11-20T05:50:00",
+      "end_date": "2026-11-23T18:00:00",
+      "status": "DISRUPTED",
+      "created_at": "2026-10-25T11:00:00",
+      "updated_at": "2026-10-25T11:30:00"
+    },
+    {
+      "id": "trip-del-cok-03",
+      "title": "Delhi to Kochi Spice Route & Backwaters Expedition",
+      "traveller_name": "Vikram Malhotra",
+      "origin": "New Delhi (DEL)",
+      "destination": "Kochi (COK)",
+      "start_date": "2026-11-25T06:00:00",
+      "end_date": "2026-11-28T21:00:00",
+      "status": "DISRUPTED",
+      "created_at": "2026-10-25T12:00:00",
+      "updated_at": "2026-10-25T12:30:00"
+    }
+  ],
+  "constraints": [
+    {
+      "id": "cons-blr-jai-01",
+      "trip_id": "trip-blr-jai-01",
+      "max_additional_budget": 4500,
+      "preferred_arrival_deadline": "2026-11-15T21:00:00",
+      "min_connection_buffer_mins": 90,
+      "prefer_direct_transport": true,
+      "avoid_overnight_travel": false,
+      "critical_activities": "Amber Fort Evening Sound & Light Show",
+      "notes": "Must reach Jaipur before 21:00 to attend conference registration and Amber Fort event."
+    },
+    {
+      "id": "cons-bom-goa-02",
+      "trip_id": "trip-bom-goa-02",
+      "max_additional_budget": 3500,
+      "preferred_arrival_deadline": "2026-11-20T17:30:00",
+      "min_connection_buffer_mins": 60,
+      "prefer_direct_transport": true,
+      "avoid_overnight_travel": true,
+      "critical_activities": "Mandovi River Sunset Catamaran Cruise",
+      "notes": "Sunset cruise boarding strictly closes at 17:40 PM at Panaji Jetty."
+    },
+    {
+      "id": "cons-del-cok-03",
+      "trip_id": "trip-del-cok-03",
+      "max_additional_budget": 4000,
+      "preferred_arrival_deadline": "2026-11-25T13:00:00",
+      "min_connection_buffer_mins": 90,
+      "prefer_direct_transport": true,
+      "avoid_overnight_travel": false,
+      "critical_activities": "Alleppey Luxury Houseboat Departure",
+      "notes": "Houseboat departs Alleppey Finishing Point strictly at 13:00 PM."
+    },
+    {
+      "id": "cons-1792930687952",
+      "trip_id": "trip-1792930687952",
+      "max_additional_budget": 5000,
+      "preferred_arrival_deadline": "2026-11-28T19:00:00",
+      "min_connection_buffer_mins": 90,
+      "prefer_direct_transport": true,
+      "avoid_overnight_travel": false,
+      "critical_activities": "Dashashwamedh Ghat Evening Ganga Aarti",
+      "notes": ""
+    }
+  ],
+  "bookings": [
+    {
+      "id": "book-01-flight",
+      "trip_id": "trip-blr-jai-01",
+      "segment_order": 1,
+      "type": "FLIGHT",
+      "provider": "IndiGo Airlines",
+      "reference_code": "6E-204",
+      "title": "Flight 6E-204: Bengaluru (BLR) to New Delhi (DEL)",
+      "origin_station": "Bengaluru Kempegowda (BLR)",
+      "destination_station": "New Delhi Indira Gandhi T1 (DEL)",
+      "scheduled_departure": "2026-11-15T07:00:00",
+      "scheduled_arrival": "2026-11-15T09:45:00",
+      "cost": 5800,
+      "currency": "INR",
+      "status": "DISRUPTED",
+      "notes": "Cancelled by carrier due to engine maintenance inspection."
+    },
+    {
+      "id": "book-02-train",
+      "trip_id": "trip-blr-jai-01",
+      "segment_order": 2,
+      "type": "TRAIN",
+      "provider": "Indian Railways (Northern Railway)",
+      "reference_code": "VB-20978",
+      "title": "Vande Bharat Express: New Delhi (NDLS) to Jaipur Jn (JP)",
+      "origin_station": "New Delhi Railway Station (NDLS)",
+      "destination_station": "Jaipur Junction (JP)",
+      "scheduled_departure": "2026-11-15T15:00:00",
+      "scheduled_arrival": "2026-11-15T18:45:00",
+      "cost": 1650,
+      "currency": "INR",
+      "status": "IMPACTED",
+      "notes": "Connecting journey. Requires arrival in Delhi and transfer to station before 14:00."
+    },
+    {
+      "id": "book-03-hotel",
+      "trip_id": "trip-blr-jai-01",
+      "segment_order": 3,
+      "type": "HOTEL",
+      "provider": "ITC Rajputana, A Luxury Collection Hotel",
+      "reference_code": "ITC-JAI-8831",
+      "title": "Hotel Stay: ITC Rajputana Deluxe Room (3 Nights)",
+      "origin_station": "Palace Road, Jaipur",
+      "destination_station": "Palace Road, Jaipur",
+      "scheduled_departure": "2026-11-15T19:30:00",
+      "scheduled_arrival": "2026-11-18T11:00:00",
+      "cost": 18500,
+      "currency": "INR",
+      "status": "IMPACTED",
+      "notes": "Standard check-in starts at 15:00. Arrivals after 21:00 require notice to avoid cancellation."
+    },
+    {
+      "id": "book-04-activity",
+      "trip_id": "trip-blr-jai-01",
+      "segment_order": 4,
+      "type": "ACTIVITY",
+      "provider": "Rajasthan Tourism Dev Corp (RTDC)",
+      "reference_code": "AMBER-EVE-44",
+      "title": "Amber Fort Evening Sound & Light Show (English Show)",
+      "origin_station": "Amber Fort, Devisinghpura, Jaipur",
+      "destination_station": "Amber Fort, Devisinghpura, Jaipur",
+      "scheduled_departure": "2026-11-15T20:30:00",
+      "scheduled_arrival": "2026-11-15T21:45:00",
+      "cost": 950,
+      "currency": "INR",
+      "status": "IMPACTED",
+      "notes": "Critical activity. Non-refundable. Gates close strictly at 20:15."
+    },
+    {
+      "id": "book-201-train",
+      "trip_id": "trip-bom-goa-02",
+      "segment_order": 1,
+      "type": "TRAIN",
+      "provider": "Indian Railways (Konkan Railway)",
+      "reference_code": "TEJAS-22119",
+      "title": "Tejas Express: Mumbai CSMT to Madgaon Jn (Goa)",
+      "origin_station": "Mumbai CSMT",
+      "destination_station": "Madgaon Junction (MAO)",
+      "scheduled_departure": "2026-11-20T05:50:00",
+      "scheduled_arrival": "2026-11-20T14:40:00",
+      "cost": 2150,
+      "currency": "INR",
+      "status": "DISRUPTED",
+      "notes": "Delayed by 180 mins due to signal equipment failure near Ratnagiri."
+    },
+    {
+      "id": "book-202-transfer",
+      "trip_id": "trip-bom-goa-02",
+      "segment_order": 2,
+      "type": "TRANSFER",
+      "provider": "Goa Tourism Prepaid Taxi",
+      "reference_code": "GOA-CAB-114",
+      "title": "Station Transfer: Madgaon Jn to Candolim North Goa",
+      "origin_station": "Madgaon Junction",
+      "destination_station": "Candolim, North Goa",
+      "scheduled_departure": "2026-11-20T15:00:00",
+      "scheduled_arrival": "2026-11-20T16:20:00",
+      "cost": 1400,
+      "currency": "INR",
+      "status": "IMPACTED",
+      "notes": "Connecting road transfer."
+    },
+    {
+      "id": "book-203-hotel",
+      "trip_id": "trip-bom-goa-02",
+      "segment_order": 3,
+      "type": "HOTEL",
+      "provider": "Taj Fort Aguada Resort & Spa",
+      "reference_code": "TAJ-GOA-774",
+      "title": "Resort Stay: Taj Fort Aguada Sea View Cottage",
+      "origin_station": "Sinquerim, Candolim, Goa",
+      "destination_station": "Sinquerim, Candolim, Goa",
+      "scheduled_departure": "2026-11-20T16:30:00",
+      "scheduled_arrival": "2026-11-23T11:00:00",
+      "cost": 24500,
+      "currency": "INR",
+      "status": "IMPACTED",
+      "notes": "Standard check-in from 15:00 onwards."
+    },
+    {
+      "id": "book-204-activity",
+      "trip_id": "trip-bom-goa-02",
+      "segment_order": 4,
+      "type": "ACTIVITY",
+      "provider": "Champions Yacht Club",
+      "reference_code": "CRUISE-SUNSET-09",
+      "title": "Mandovi River Sunset Catamaran VIP Cruise",
+      "origin_station": "Panaji Jetty, Mandovi River",
+      "destination_station": "Panaji Jetty, Mandovi River",
+      "scheduled_departure": "2026-11-20T18:00:00",
+      "scheduled_arrival": "2026-11-20T20:30:00",
+      "cost": 2800,
+      "currency": "INR",
+      "status": "IMPACTED",
+      "notes": "Boarding strictly closes at 17:40 PM. Non-refundable."
+    },
+    {
+      "id": "book-301-flight",
+      "trip_id": "trip-del-cok-03",
+      "segment_order": 1,
+      "type": "FLIGHT",
+      "provider": "Air India",
+      "reference_code": "AI-512",
+      "title": "Flight AI-512: New Delhi (DEL) to Kochi (COK)",
+      "origin_station": "Indira Gandhi International T3 (DEL)",
+      "destination_station": "Cochin International Airport (COK)",
+      "scheduled_departure": "2026-11-25T06:00:00",
+      "scheduled_arrival": "2026-11-25T09:15:00",
+      "cost": 6200,
+      "currency": "INR",
+      "status": "DISRUPTED",
+      "notes": "Delayed by 240 mins due to severe morning dense fog ground-stop at IGI Airport."
+    },
+    {
+      "id": "book-302-transfer",
+      "trip_id": "trip-del-cok-03",
+      "segment_order": 2,
+      "type": "TRANSFER",
+      "provider": "Kerala Gods Own Cabs",
+      "reference_code": "KER-CAB-89",
+      "title": "Airport Express Taxi: Kochi Airport to Alleppey Jetty",
+      "origin_station": "Cochin Airport (COK)",
+      "destination_station": "Alleppey Finishing Point Jetty",
+      "scheduled_departure": "2026-11-25T09:45:00",
+      "scheduled_arrival": "2026-11-25T11:45:00",
+      "cost": 2100,
+      "currency": "INR",
+      "status": "IMPACTED",
+      "notes": "Required road connection to catch the scheduled houseboat cruise."
+    },
+    {
+      "id": "book-303-hotel",
+      "trip_id": "trip-del-cok-03",
+      "segment_order": 3,
+      "type": "HOTEL",
+      "provider": "Spice Routes Luxury Houseboats",
+      "reference_code": "HB-KERALA-33",
+      "title": "Private Premium Houseboat Cruise & Overnight Stay (Alleppey)",
+      "origin_station": "Alleppey Backwaters, Kerala",
+      "destination_station": "Alleppey Backwaters, Kerala",
+      "scheduled_departure": "2026-11-25T12:30:00",
+      "scheduled_arrival": "2026-11-26T09:30:00",
+      "cost": 16800,
+      "currency": "INR",
+      "status": "IMPACTED",
+      "notes": "Boat casts off strictly at 13:00 PM. No boarding after departure."
+    },
+    {
+      "id": "book-304-activity",
+      "trip_id": "trip-del-cok-03",
+      "segment_order": 4,
+      "type": "ACTIVITY",
+      "provider": "Kerala Kathakali Centre Fort Kochi",
+      "reference_code": "KATHA-EVE-12",
+      "title": "Traditional Kathakali Classical Performance & Makeup Demo",
+      "origin_station": "Fort Kochi Kathakali Centre",
+      "destination_station": "Fort Kochi Kathakali Centre",
+      "scheduled_departure": "2026-11-25T18:30:00",
+      "scheduled_arrival": "2026-11-25T20:30:00",
+      "cost": 800,
+      "currency": "INR",
+      "status": "IMPACTED",
+      "notes": "Evening performance."
+    },
+    {
+      "id": "book-1792930687952-0",
+      "trip_id": "trip-1792930687952",
+      "segment_order": 1,
+      "type": "FLIGHT",
+      "provider": "SpiceJet",
+      "reference_code": "SG-814",
+      "title": "FLIGHT SG-814: Hyderabad (HYD) to Varanasi (VNS)",
+      "origin_station": "Hyderabad (HYD)",
+      "destination_station": "Varanasi (VNS)",
+      "scheduled_departure": "2026-11-28T07:00:00",
+      "scheduled_arrival": "2026-11-28T19:00:00",
+      "cost": 5400,
+      "currency": "INR",
+      "status": "DISRUPTED",
+      "notes": ""
+    }
+  ],
+  "disruptions": [
+    {
+      "id": "disrupt-1792930720626",
+      "trip_id": "trip-1792930687952",
+      "booking_id": "book-1792930687952-0",
+      "disruption_type": "FLIGHT_CANCELLATION",
+      "severity": "CRITICAL",
+      "planned_time": "2026-11-28T07:00:00",
+      "updated_time": "2026-11-28T07:00:00",
+      "delay_minutes": 720,
+      "description": "Flight cancelled by carrier before departure due to unscheduled technical aircraft maintenance. No immediate automatic rebooking offered.",
+      "reported_at": "2026-10-25T12:18:40.626Z"
+    },
+    {
+      "id": "disrupt-blr-jai-01",
+      "trip_id": "trip-blr-jai-01",
+      "booking_id": "book-01-flight",
+      "disruption_type": "FLIGHT_CANCELLATION",
+      "severity": "CRITICAL",
+      "planned_time": "2026-11-15T07:00:00",
+      "updated_time": "2026-11-15T07:00:00",
+      "delay_minutes": 720,
+      "description": "IndiGo flight 6E-204 from BLR to DEL scheduled at 07:00 AM cancelled at 05:15 AM due to unscheduled technical aircraft maintenance. No automatic rebooking provided at counter.",
+      "reported_at": "2026-10-25T10:15:00"
+    },
+    {
+      "id": "disrupt-bom-goa-02",
+      "trip_id": "trip-bom-goa-02",
+      "booking_id": "book-201-train",
+      "disruption_type": "TRAIN_DELAY",
+      "severity": "HIGH",
+      "planned_time": "2026-11-20T05:50:00",
+      "updated_time": "2026-11-20T08:50:00",
+      "delay_minutes": 180,
+      "description": "Tejas Express 22119 halted near Ratnagiri due to automated signal system breakdown. Delay estimated at 3 hours, pushing Madgaon arrival past 17:40 PM.",
+      "reported_at": "2026-10-25T11:30:00"
+    },
+    {
+      "id": "disrupt-del-cok-03",
+      "trip_id": "trip-del-cok-03",
+      "booking_id": "book-301-flight",
+      "disruption_type": "FLIGHT_DELAY",
+      "severity": "CRITICAL",
+      "planned_time": "2026-11-25T06:00:00",
+      "updated_time": "2026-11-25T10:00:00",
+      "delay_minutes": 240,
+      "description": "Dense morning fog at Delhi IGI Airport triggered low visibility procedures. Flight AI-512 held on ground for 4 hours, missing the Alleppey Houseboat 13:00 cast-off.",
+      "reported_at": "2026-10-25T12:30:00"
+    }
+  ],
+  "recovery_options": [
+    {
+      "id": "rec-opt-a-1792930721949",
+      "option_code": "OPT-A",
+      "title": "Priority Express: Direct Flight (Hyderabad (HYD) → Varanasi (VNS))",
+      "transport_type": "FLIGHT (DIRECT)",
+      "provider": "National Air Carrier",
+      "route_summary": "Hyderabad (HYD) → Varanasi (VNS) [Non-stop Priority Route]",
+      "departure_time": "2026-11-28T05:30:00.000Z",
+      "arrival_time": "2026-11-28T08:00:00.000Z",
+      "total_cost": 8000,
+      "additional_cost": 3250,
+      "stops": 0,
+      "availability_status": "Available (4 seats in Economy)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Optimized Recovery: Direct connection from Hyderabad (HYD) to Varanasi (VNS). Arrives comfortably before downstream deadlines, protecting hotel reservation and \"Dashashwamedh Ghat Evening Ganga Aarti\".",
+      "advantages": [
+        "Direct non-stop service to Varanasi (VNS)",
+        "Eliminates transit delays and missed connections",
+        "Protects scheduled activity: Dashashwamedh Ghat Evening Ganga Aarti",
+        "Within your additional budget limit of ₹5,000"
+      ],
+      "disadvantages": [
+        "Moderate fare difference of ₹3,250"
+      ],
+      "justification": "Recommended as the fastest whole-trip recovery to reach Varanasi (VNS) with minimal stress and zero secondary booking cancellations.",
+      "overall_score": 90,
+      "score_factors": {
+        "time": {
+          "score": 35,
+          "max": 35,
+          "explanation": "Arrives at 01:30 pm, 330 mins safely before 07:00 pm deadline."
+        },
+        "budget": {
+          "score": 15,
+          "max": 25,
+          "explanation": "Additional cost of ₹3,250 is within the ₹5,000 limit."
+        },
+        "cascade": {
+          "score": 25,
+          "max": 25,
+          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Permits normal hotel check-in without special late arrival waiver. Successfully preserves \"Dashashwamedh Ghat Evening Ganga Aarti\""
+        },
+        "comfort": {
+          "score": 15,
+          "max": 15,
+          "explanation": "Direct journey with no intermediate airport or station transfers."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": true,
+        "isCriticalActivityPreserved": true,
+        "relaxationOptions": []
+      },
+      "is_recommended": true,
+      "trip_id": "trip-1792930687952",
+      "disruption_id": "disrupt-1792930720626"
+    },
+    {
+      "id": "rec-opt-b-1792930721949",
+      "option_code": "OPT-B",
+      "title": "Balanced Transit: 1-Stop Fast Rail / Secondary Carrier (Hyderabad (HYD) → Varanasi (VNS))",
+      "transport_type": "MULTIMODAL CONNECTING",
+      "provider": "Intercity Rail / Carrier Network",
+      "route_summary": "Hyderabad (HYD) → Transit Hub → Varanasi (VNS)",
+      "departure_time": "2026-11-28T03:30:00.000Z",
+      "arrival_time": "2026-11-28T09:30:00.000Z",
+      "total_cost": 5500,
+      "additional_cost": 1750,
+      "stops": 1,
+      "availability_status": "Available (Confirmed Class)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Moderate Impact: Preserves destination arrival on the same calendar day, but later timing may require notifying hotel reception of late check-in.",
+      "advantages": [
+        "Low additional expense of only ₹1,750",
+        "Comfortable connection window at intermediate transit hub"
+      ],
+      "disadvantages": [
+        "1 intermediate transfer required",
+        "Late evening arrival"
+      ],
+      "justification": "A dependable, cost-conscious secondary option if direct flights are not prioritized.",
+      "overall_score": 85,
+      "score_factors": {
+        "time": {
+          "score": 35,
+          "max": 35,
+          "explanation": "Arrives at 03:00 pm, 240 mins safely before 07:00 pm deadline."
+        },
+        "budget": {
+          "score": 20,
+          "max": 25,
+          "explanation": "Additional cost of ₹1,750 is within the ₹5,000 limit."
+        },
+        "cascade": {
+          "score": 20,
+          "max": 25,
+          "explanation": "Maintains transit connection with verified connection buffer. Permits normal hotel check-in without special late arrival waiver. Successfully preserves \"Dashashwamedh Ghat Evening Ganga Aarti\""
+        },
+        "comfort": {
+          "score": 10,
+          "max": 15,
+          "explanation": "One connecting segment with comfortable layover."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": true,
+        "isCriticalActivityPreserved": true,
+        "relaxationOptions": []
+      },
+      "is_recommended": false,
+      "trip_id": "trip-1792930687952",
+      "disruption_id": "disrupt-1792930720626"
+    },
+    {
+      "id": "rec-opt-c-1792930721949",
+      "option_code": "OPT-C",
+      "title": "Economy Reroute: Overnight Superfast Transit (Hyderabad (HYD) → Varanasi (VNS))",
+      "transport_type": "OVERNIGHT TRANSIT",
+      "provider": "Express Rail / Highway Service",
+      "route_summary": "Hyderabad (HYD) → Varanasi (VNS) [Overnight Express]",
+      "departure_time": "2026-11-28T09:30:00.000Z",
+      "arrival_time": "2026-11-28T19:30:00.000Z",
+      "total_cost": 2500,
+      "additional_cost": 500,
+      "stops": 2,
+      "availability_status": "Available (High capacity)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Budget Priority: Arrives following morning. First night hotel and evening activities require rescheduling.",
+      "advantages": [
+        "Maximum budget savings (only ₹500 extra)"
+      ],
+      "disadvantages": [
+        "Arrives late or following day",
+        "Significant fatigue and rescheduled activities"
+      ],
+      "justification": "Recommended only if budget minimization is the primary decision factor.",
+      "overall_score": 35,
+      "score_factors": {
+        "time": {
+          "score": 0,
+          "max": 35,
+          "explanation": "Arrives 360 mins after preferred deadline (07:00 pm) [-25 pts] (Arrives on the following day)"
+        },
+        "budget": {
+          "score": 24,
+          "max": 25,
+          "explanation": "Additional cost of ₹500 is within the ₹5,000 limit."
+        },
+        "cascade": {
+          "score": 6,
+          "max": 25,
+          "explanation": "Maintains transit connection with verified connection buffer. Requires hotel stay modification or risk of first night loss. Cannot make \"Dashashwamedh Ghat Evening Ganga Aarti\" at scheduled time (requires reschedule)"
+        },
+        "comfort": {
+          "score": 5,
+          "max": 15,
+          "explanation": "Multi-segment journey with high transfer fatigue."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": false,
+        "isCriticalActivityPreserved": false,
+        "relaxationOptions": [
+          {
+            "type": "RELAX_DEADLINE",
+            "title": "Extend Arrival Deadline",
+            "description": "Accept arrival at 01:00 am instead of preferred 07:00 pm."
+          },
+          {
+            "type": "RESCHEDULE_ACTIVITY",
+            "title": "Reschedule Important Activity",
+            "description": "Move \"Dashashwamedh Ghat Evening Ganga Aarti\" to tomorrow morning at 09:30 AM."
+          }
+        ]
+      },
+      "is_recommended": false,
+      "trip_id": "trip-1792930687952",
+      "disruption_id": "disrupt-1792930720626",
+      "is_approved": true
+    },
+    {
+      "id": "rec-opt-a-trip-blr-jai-01",
+      "option_code": "OPT-A",
+      "title": "Priority Direct Re-route: Air India AI-840 (Direct BLR → JAI)",
+      "transport_type": "FLIGHT (DIRECT)",
+      "provider": "Air India",
+      "route_summary": "Bengaluru (BLR) → Jaipur (JAI) [Direct Flight]",
+      "departure_time": "2026-11-15T11:15:00",
+      "arrival_time": "2026-11-15T13:45:00",
+      "total_cost": 9000,
+      "additional_cost": 3200,
+      "stops": 0,
+      "availability_status": "Available (4 seats in Economy)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Complete Whole-Trip Recovery: Bypasses Delhi connection altogether. Arrives in Jaipur at 13:45 PM (5 hours ahead of original schedule). Train ticket can be refunded, hotel check-in is early/relaxed, and Amber Fort evening tour is 100% preserved.",
+      "advantages": [
+        "Direct non-stop flight eliminating transit risk in Delhi",
+        "Arrives safely at 13:45 PM, well ahead of the 21:00 deadline",
+        "Preserves Amber Fort Evening Show at 20:30 without reschedule",
+        "Additional cost of ₹3,200 is within the ₹4,500 budget limit",
+        "Eligible for ₹1,650 refund on unused Vande Bharat train ticket"
+      ],
+      "disadvantages": [
+        "₹3,200 out-of-pocket payment required before airline claim reimbursement"
+      ],
+      "justification": "Recommended as the optimal whole-trip recovery: it bypasses the broken Delhi transit entirely, gets the traveller to Jaipur 5 hours early, and protects both hotel check-in and the critical evening cultural event within traveller budget.",
+      "overall_score": 89,
+      "score_factors": {
+        "time": {
+          "score": 35,
+          "max": 35,
+          "explanation": "Arrives at 01:45 pm, 435 mins safely before 09:00 pm deadline."
+        },
+        "budget": {
+          "score": 14,
+          "max": 25,
+          "explanation": "Additional cost of ₹3,200 is within the ₹4,500 limit."
+        },
+        "cascade": {
+          "score": 25,
+          "max": 25,
+          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Permits normal hotel check-in without special late arrival waiver. Successfully preserves \"Amber Fort Evening Sound & Light Show\""
+        },
+        "comfort": {
+          "score": 15,
+          "max": 15,
+          "explanation": "Direct journey with no intermediate airport or station transfers."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": true,
+        "isCriticalActivityPreserved": true,
+        "relaxationOptions": []
+      },
+      "is_recommended": true,
+      "trip_id": "trip-blr-jai-01",
+      "disruption_id": "disrupt-blr-jai-01"
+    },
+    {
+      "id": "rec-opt-b-trip-blr-jai-01",
+      "option_code": "OPT-B",
+      "title": "Protected Connection: Vistara UK-812 + Evening Shatabdi Express 12015",
+      "transport_type": "FLIGHT + TRAIN (MULTIMODAL)",
+      "provider": "Vistara & Indian Railways",
+      "route_summary": "BLR → DEL (Flight) + Delhi → Jaipur (Evening Shatabdi Train)",
+      "departure_time": "2026-11-15T09:30:00",
+      "arrival_time": "2026-11-15T22:40:00",
+      "total_cost": 7600,
+      "additional_cost": 1800,
+      "stops": 1,
+      "availability_status": "Available (Executive & AC Chair Car)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Partial Cascade Recovery: Replaces flight to Delhi with Vistara UK-812 (lands 12:15). Provides 5h 35m transfer window to catch Evening Shatabdi 12015 at 17:50 PM. However, arrival in Jaipur is 22:40 PM, causing the Amber Fort show to be missed and requiring late check-in at ITC Rajputana.",
+      "advantages": [
+        "Moderate additional cost of only ₹1,800",
+        "Generous 5.5 hour connection buffer eliminates transfer stress in Delhi",
+        "Retains railway scenic travel leg into Jaipur"
+      ],
+      "disadvantages": [
+        "Arrives at 22:40 PM (after preferred 21:00 deadline)",
+        "Amber Fort 20:30 PM show is missed and must be rescheduled",
+        "Requires alerting hotel reception of late check-in past 22:00"
+      ],
+      "justification": "Viable secondary alternative for budget-conscious travellers willing to sacrifice the evening cultural activity to save ₹1,400.",
+      "overall_score": 58,
+      "score_factors": {
+        "time": {
+          "score": 14,
+          "max": 35,
+          "explanation": "Arrives 100 mins after preferred deadline (09:00 pm) [-21 pts]"
+        },
+        "budget": {
+          "score": 19,
+          "max": 25,
+          "explanation": "Additional cost of ₹1,800 is within the ₹4,500 limit."
+        },
+        "cascade": {
+          "score": 15,
+          "max": 25,
+          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Allows same-day hotel check-in with standard late arrival notification. Cannot make \"Amber Fort Evening Sound & Light Show\" at scheduled time (requires reschedule)"
+        },
+        "comfort": {
+          "score": 10,
+          "max": 15,
+          "explanation": "One connecting segment with comfortable layover."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": false,
+        "isCriticalActivityPreserved": false,
+        "relaxationOptions": [
+          {
+            "type": "RELAX_DEADLINE",
+            "title": "Extend Arrival Deadline",
+            "description": "Accept arrival at 10:40 pm instead of preferred 09:00 pm."
+          },
+          {
+            "type": "RESCHEDULE_ACTIVITY",
+            "title": "Reschedule Important Activity",
+            "description": "Move \"Amber Fort Evening Sound & Light Show\" to tomorrow morning at 09:30 AM."
+          }
+        ]
+      },
+      "is_recommended": false,
+      "trip_id": "trip-blr-jai-01",
+      "disruption_id": "disrupt-blr-jai-01"
+    },
+    {
+      "id": "rec-opt-c-trip-blr-jai-01",
+      "option_code": "OPT-C",
+      "title": "Economy Reroute: Afternoon Flight + Intercity AC Electric Sleeper Coach",
+      "transport_type": "FLIGHT + BUS (MULTIMODAL)",
+      "provider": "SpiceJet & Zingbus Intercity",
+      "route_summary": "BLR → DEL (Flight SG-192) + Delhi Dhaula Kuan → Jaipur (Express Highway Coach)",
+      "departure_time": "2026-11-15T13:00:00",
+      "arrival_time": "2026-11-15T23:15:00",
+      "total_cost": 6400,
+      "additional_cost": 600,
+      "stops": 1,
+      "availability_status": "Available (High capacity)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Budget Priority Recovery: Minimizes extra cash outlay to only ₹600. However, arrival is delayed to 23:15 PM. Breaks evening events, causes late arrival fatigue, and risks highway traffic delays.",
+      "advantages": [
+        "Lowest additional cost: only ₹600 additional spending",
+        "Leaves Bengaluru at a relaxed afternoon time (13:00 PM)"
+      ],
+      "disadvantages": [
+        "Late arrival at 23:15 PM breaches the 21:00 arrival constraint",
+        "Amber Fort evening event missed",
+        "Transfer from Terminal 3 to highway pickup point involves road cab",
+        "Higher travel fatigue"
+      ],
+      "justification": "Suitable only if the traveller explicitly prioritizes budget minimization above all other constraints.",
+      "overall_score": 54,
+      "score_factors": {
+        "time": {
+          "score": 10,
+          "max": 35,
+          "explanation": "Arrives 135 mins after preferred deadline (09:00 pm) [-25 pts]"
+        },
+        "budget": {
+          "score": 23,
+          "max": 25,
+          "explanation": "Additional cost of ₹600 is within the ₹4,500 limit."
+        },
+        "cascade": {
+          "score": 11,
+          "max": 25,
+          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Requires hotel stay modification or risk of first night loss. Cannot make \"Amber Fort Evening Sound & Light Show\" at scheduled time (requires reschedule)"
+        },
+        "comfort": {
+          "score": 10,
+          "max": 15,
+          "explanation": "One connecting segment with comfortable layover."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": false,
+        "isCriticalActivityPreserved": false,
+        "relaxationOptions": [
+          {
+            "type": "RELAX_DEADLINE",
+            "title": "Extend Arrival Deadline",
+            "description": "Accept arrival at 11:15 pm instead of preferred 09:00 pm."
+          },
+          {
+            "type": "RESCHEDULE_ACTIVITY",
+            "title": "Reschedule Important Activity",
+            "description": "Move \"Amber Fort Evening Sound & Light Show\" to tomorrow morning at 09:30 AM."
+          }
+        ]
+      },
+      "is_recommended": false,
+      "trip_id": "trip-blr-jai-01",
+      "disruption_id": "disrupt-blr-jai-01"
+    }
+  ],
+  "revised_itineraries": [
+    {
+      "id": "itin-1792930730838",
+      "trip_id": "trip-1792930687952",
+      "selected_recovery_option_id": "rec-opt-c-1792930721949",
+      "generated_at": "2026-10-25T12:18:50.838Z",
+      "summary": "Revised recovery plan confirmed using Option OPT-C (Economy Reroute: Overnight Superfast Transit (Hyderabad (HYD) → Varanasi (VNS))). Reached Varanasi (VNS) safely, healed whole-trip dependencies, and generated 5 actionable next steps.",
+      "revised_schedule": [
+        {
+          "segmentId": "rev-seg-01",
+          "type": "OVERNIGHT TRANSIT",
+          "provider": "Express Rail / Highway Service",
+          "title": "Economy Reroute: Overnight Superfast Transit (Hyderabad (HYD) → Varanasi (VNS))",
+          "referenceCode": "OPT-C",
+          "originStation": "Hyderabad (HYD)",
+          "destinationStation": "Varanasi (VNS)",
+          "departureTime": "2026-11-28T09:30:00.000Z",
+          "arrivalTime": "2026-11-28T19:30:00.000Z",
+          "status": "CONFIRMED_ALTERNATIVE",
+          "notes": "Approved whole-trip recovery segment connecting Hyderabad (HYD) to Varanasi (VNS).",
+          "cost": 2500
+        }
+      ],
+      "remaining_conflicts": [
+        "Evening schedule adjusted to accommodate transit duration."
+      ],
+      "actions_checklist": [
+        {
+          "id": "act-01",
+          "title": "Book recommended travel segment (Economy Reroute: Overnight Superfast Transit (Hyderabad (HYD) → Varanasi (VNS)))",
+          "category": "BOOKING_ACTION",
+          "description": "Reserve your seat with Express Rail / Highway Service departing at 03:00 pm. (Fare: ₹2,500).",
+          "priority": "HIGH",
+          "completed": false
+        },
+        {
+          "id": "act-02",
+          "title": "Claim full refund for cancelled SpiceJet booking",
+          "category": "REFUND_ACTION",
+          "description": "Submit an automated compensation claim with carrier reference to retrieve full ticket credit or reimbursement.",
+          "priority": "HIGH",
+          "completed": false
+        },
+        {
+          "id": "act-03",
+          "title": "Confirm connecting transfer pickup time",
+          "category": "TRANSIT_ACTION",
+          "description": "Confirm platform or terminal pickup points.",
+          "priority": "MEDIUM",
+          "completed": false
+        },
+        {
+          "id": "act-04",
+          "title": "Notify Destination Hotel & Resort of revised check-in schedule",
+          "category": "HOTEL_ACTION",
+          "description": "Alert front desk reception of your expected check-in time around 2:00. Reference booking HTL-CONF.",
+          "priority": "MEDIUM",
+          "completed": false
+        },
+        {
+          "id": "act-05",
+          "title": "Verify scheduled event booking",
+          "category": "ACTIVITY_ACTION",
+          "description": "Confirm ticket status and venue admission requirements.",
+          "priority": "LOW",
+          "completed": false
+        }
+      ]
+    }
+  ]
+}
