@@ -4,102 +4,84 @@ import { Clock, DollarSign, Layers, Heart } from 'lucide-react';
 export default function ScoreBreakdown({ factors, overallScore, isRecommended }) {
   if (!factors) return null;
 
+  const items = [
+    {
+      key: 'time',
+      label: 'Timing & Arrival',
+      icon: Clock,
+      factor: factors.time,
+      defaultMax: 35,
+    },
+    {
+      key: 'budget',
+      label: 'Budget Feasibility',
+      icon: DollarSign,
+      factor: factors.budget,
+      defaultMax: 25,
+    },
+    {
+      key: 'cascade',
+      label: 'Cascade Healed',
+      icon: Layers,
+      factor: factors.cascade,
+      defaultMax: 25,
+    },
+    {
+      key: 'comfort',
+      label: 'Transit Comfort',
+      icon: Heart,
+      factor: factors.comfort,
+      defaultMax: 15,
+    },
+  ];
+
   return (
-    <div className="bg-slate-50 border border-slate-200 rounded-lg p-3.5 my-3">
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
-          Decision Engine Score Breakdown
+    <div className="bg-slate-50/70 border border-slate-200/70 rounded-xl p-4 my-3">
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+          Optimization Score Breakdown
         </span>
         <div className="flex items-center space-x-1.5">
-          <span className="text-xs text-slate-500">Overall:</span>
-          <span className={`text-base font-bold px-2 py-0.5 rounded ${
-            overallScore >= 80 ? 'bg-emerald-100 text-emerald-800' : (overallScore >= 60 ? 'bg-amber-100 text-amber-800' : 'bg-slate-200 text-slate-700')
+          <span className="text-xs text-slate-400">Score:</span>
+          <span className={`text-xs font-bold px-2 py-0.5 rounded-full border ${
+            overallScore >= 80
+              ? 'bg-emerald-50 text-emerald-700 border-emerald-200/80'
+              : overallScore >= 60
+              ? 'bg-amber-50 text-amber-700 border-amber-200/80'
+              : 'bg-slate-100 text-slate-700 border-slate-200'
           }`}>
             {overallScore}/100
           </span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-        {/* Factor 1: Time */}
-        <div className="bg-white p-2 rounded border border-slate-200">
-          <div className="flex items-center justify-between mb-1">
-            <span className="flex items-center text-slate-700 font-medium">
-              <Clock className="w-3.5 h-3.5 text-emerald-600 mr-1.5" />
-              Timing & Arrival
-            </span>
-            <span className="font-semibold text-slate-800">
-              {factors.time?.score || 0}/{factors.time?.max || 35} pts
-            </span>
-          </div>
-          <div className="w-full bg-slate-100 rounded-full h-1.5 mb-1">
-            <div
-              className="bg-emerald-600 h-1.5 rounded-full"
-              style={{ width: `${Math.round(((factors.time?.score || 0) / (factors.time?.max || 35)) * 100)}%` }}
-            ></div>
-          </div>
-          <p className="text-[11px] text-slate-500 line-clamp-1">{factors.time?.explanation}</p>
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+        {items.map(({ key, label, icon: Icon, factor, defaultMax }) => {
+          const score = factor?.score || 0;
+          const max = factor?.max || defaultMax;
+          const pct = Math.min(100, Math.max(0, Math.round((score / max) * 100)));
 
-        {/* Factor 2: Budget */}
-        <div className="bg-white p-2 rounded border border-slate-200">
-          <div className="flex items-center justify-between mb-1">
-            <span className="flex items-center text-slate-700 font-medium">
-              <DollarSign className="w-3.5 h-3.5 text-emerald-600 mr-1.5" />
-              Budget Feasibility
-            </span>
-            <span className="font-semibold text-slate-800">
-              {factors.budget?.score || 0}/{factors.budget?.max || 25} pts
-            </span>
-          </div>
-          <div className="w-full bg-slate-100 rounded-full h-1.5 mb-1">
-            <div
-              className="bg-emerald-600 h-1.5 rounded-full"
-              style={{ width: `${Math.round(((factors.budget?.score || 0) / (factors.budget?.max || 25)) * 100)}%` }}
-            ></div>
-          </div>
-          <p className="text-[11px] text-slate-500 line-clamp-1">{factors.budget?.explanation}</p>
-        </div>
-
-        {/* Factor 3: Cascade */}
-        <div className="bg-white p-2 rounded border border-slate-200">
-          <div className="flex items-center justify-between mb-1">
-            <span className="flex items-center text-slate-700 font-medium">
-              <Layers className="w-3.5 h-3.5 text-emerald-600 mr-1.5" />
-              Cascade Healed
-            </span>
-            <span className="font-semibold text-slate-800">
-              {factors.cascade?.score || 0}/{factors.cascade?.max || 25} pts
-            </span>
-          </div>
-          <div className="w-full bg-slate-100 rounded-full h-1.5 mb-1">
-            <div
-              className="bg-emerald-600 h-1.5 rounded-full"
-              style={{ width: `${Math.round(((factors.cascade?.score || 0) / (factors.cascade?.max || 25)) * 100)}%` }}
-            ></div>
-          </div>
-          <p className="text-[11px] text-slate-500 line-clamp-1">{factors.cascade?.explanation}</p>
-        </div>
-
-        {/* Factor 4: Comfort */}
-        <div className="bg-white p-2 rounded border border-slate-200">
-          <div className="flex items-center justify-between mb-1">
-            <span className="flex items-center text-slate-700 font-medium">
-              <Heart className="w-3.5 h-3.5 text-emerald-600 mr-1.5" />
-              Transit Comfort
-            </span>
-            <span className="font-semibold text-slate-800">
-              {factors.comfort?.score || 0}/{factors.comfort?.max || 15} pts
-            </span>
-          </div>
-          <div className="w-full bg-slate-100 rounded-full h-1.5 mb-1">
-            <div
-              className="bg-emerald-600 h-1.5 rounded-full"
-              style={{ width: `${Math.round(((factors.comfort?.score || 0) / (factors.comfort?.max || 15)) * 100)}%` }}
-            ></div>
-          </div>
-          <p className="text-[11px] text-slate-500 line-clamp-1">{factors.comfort?.explanation}</p>
-        </div>
+          return (
+            <div key={key} className="bg-white p-2.5 rounded-lg border border-slate-100">
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="flex items-center space-x-1.5 text-slate-700 font-medium text-xs">
+                  <Icon className="w-3.5 h-3.5 text-slate-400" />
+                  <span>{label}</span>
+                </span>
+                <span className="font-semibold text-slate-900 text-xs">
+                  {score}/{max}
+                </span>
+              </div>
+              <div className="w-full bg-slate-100 rounded-full h-1 mb-1.5">
+                <div
+                  className="bg-emerald-600 h-1 rounded-full transition-all duration-300"
+                  style={{ width: `${pct}%` }}
+                />
+              </div>
+              <p className="text-[11px] text-slate-400 line-clamp-1">{factor?.explanation}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -137,36 +137,14 @@ export default function App() {
 
       {/* Floating feedback toast */}
       {toast && (
-        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs px-4 py-2.5 rounded-lg shadow-lg border border-slate-700 flex items-center space-x-2 animate-fade-in no-print">
-          <span className={`w-2 h-2 rounded-full ${toast.type === 'error' ? 'bg-rose-500' : 'bg-emerald-400'}`}></span>
+        <div className="fixed bottom-5 right-5 z-50 bg-slate-900/95 backdrop-blur-md text-white text-xs px-3.5 py-2 rounded-lg shadow-lg border border-slate-700/60 flex items-center space-x-2 animate-fade-in no-print">
+          <span className={`w-1.5 h-1.5 rounded-full ${toast.type === 'error' ? 'bg-rose-500' : 'bg-emerald-400'}`}></span>
           <span>{toast.message}</span>
         </div>
       )}
 
-      {/* Breadcrumb strip */}
-      <div className="bg-white border-b border-slate-200 px-4 sm:px-6 lg:px-8 py-2 text-xs text-slate-500 no-print">
-        <div className="max-w-7xl mx-auto flex items-center space-x-2">
-          <span
-            className="cursor-pointer hover:text-slate-800"
-            onClick={() => setActivePage('dashboard')}
-          >
-            Home
-          </span>
-          <span>/</span>
-          <span className="font-semibold text-slate-800 capitalize">
-            {activePage.replace('-', ' ')}
-          </span>
-          {activeTrip && (
-            <>
-              <span>/</span>
-              <span className="text-slate-600 truncate max-w-xs">{activeTrip.title}</span>
-            </>
-          )}
-        </div>
-      </div>
-
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6">
         {activePage === 'dashboard' && (
           <DashboardPage
             trips={trips}
