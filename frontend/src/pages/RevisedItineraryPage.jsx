@@ -3,6 +3,13 @@ import { CheckCircle2, Printer, Download, Clock, MapPin, AlertCircle, ShieldAler
 import { fetchRevisedItinerary, toggleActionChecklistItem } from '../services/api';
 import StatusBadge from '../components/StatusBadge';
 
+function formatTimeSafe(dateStr) {
+  if (!dateStr) return 'TBD';
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return dateStr;
+  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
 export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
   const [itineraryData, setItineraryData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -14,11 +21,30 @@ export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
     setError('');
     try {
       const res = await fetchRevisedItinerary(activeTrip.id);
-      if (res.success) {
+      if (res.success && res.data) {
         setItineraryData(res.data);
+      } else {
+        // Fallback check if activeTrip has revisedItinerary attached
+        if (activeTrip.revisedItinerary) {
+          setItineraryData({
+            trip: activeTrip,
+            itinerary: activeTrip.revisedItinerary,
+            selectedOption: (activeTrip.recoveryOptions || [])[0] || null,
+          });
+        } else {
+          setError(res.error || 'No revised itinerary available yet');
+        }
       }
     } catch (err) {
-      setError(err.message || 'No revised itinerary available yet');
+      if (activeTrip.revisedItinerary) {
+        setItineraryData({
+          trip: activeTrip,
+          itinerary: activeTrip.revisedItinerary,
+          selectedOption: (activeTrip.recoveryOptions || [])[0] || null,
+        });
+      } else {
+        setError(err.message || 'No revised itinerary available yet');
+      }
     } finally {
       setLoading(false);
     }
@@ -32,13 +58,25 @@ export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
     try {
       const res = await toggleActionChecklistItem(activeTrip.id, actionId, !currentVal);
       if (res.success && itineraryData) {
-        setItineraryData({
-          ...itineraryData,
-          itinerary: {
-            ...itineraryData.itinerary,
-            actions_checklist: res.data,
-          }
-        });
+        const currentChecklist = itin?.actions_checklist || [];
+        const updatedList = Array.isArray(res.data)
+          ? res.data
+          : currentChecklist.map(a => a.id === actionId ? { ...a, completed: !currentVal } : a);
+
+        if (itineraryData.itinerary) {
+          setItineraryData({
+            ...itineraryData,
+            itinerary: {
+              ...itineraryData.itinerary,
+              actions_checklist: updatedList,
+            }
+          });
+        } else {
+          setItineraryData({
+            ...itineraryData,
+            actions_checklist: updatedList,
+          });
+        }
       }
     } catch (e) {
       console.error('Failed to toggle checklist item:', e);
@@ -51,31 +89,30 @@ export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
 
   const handleDownload = () => {
     if (!itineraryData) return;
-    const itin = itineraryData.itinerary;
-    const trip = itineraryData.trip;
-    const opt = itineraryData.selectedOption;
+    const itinObj = itineraryData?.itinerary || (itineraryData?.revised_schedule ? itineraryData : {});
+    const tripObj = itineraryData?.trip || activeTrip || {};
 
     let content = `=====================================================\n`;
     content += ` TRIPRESCUE AI - REVISED TRAVEL RECOVERY ITINERARY\n`;
     content += `=====================================================\n\n`;
-    content += `Trip: ${trip.title}\n`;
-    content += `Traveller: ${trip.traveller_name}\n`;
-    content += `Route: ${trip.origin} -> ${trip.destination}\n`;
-    content += `Generated At: ${new Date(itin.generated_at).toLocaleString()}\n`;
+    content += `Trip: ${tripObj.title || 'Recovered Journey'}\n`;
+    content += `Traveller: ${tripObj.traveller_name || 'Traveller'}\n`;
+    content += `Route: ${tripObj.origin || ''} -> ${tripObj.destination || ''}\n`;
+    content += `Generated At: ${new Date().toLocaleString()}\n`;
     content += `Status: RECOVERED\n\n`;
 
     content += `RECOVERY SOLUTION SUMMARY:\n`;
-    content += `${itin.summary}\n\n`;
+    content += `${itinObj.summary || ''}\n\n`;
 
     content += `REVISED SEGMENT TIMELINE:\n`;
-    (itin.revised_schedule || []).forEach((seg, i) => {
+    (itinObj.revised_schedule || []).forEach((seg, i) => {
       content += `${i + 1}. [${seg.type}] ${seg.title} (${seg.referenceCode})\n`;
-      content += `   Departure: ${seg.departureTime} | Arrival: ${seg.arrivalTime}\n`;
+      content += `   Departure: ${formatTimeSafe(seg.departureTime)} | Arrival: ${formatTimeSafe(seg.arrivalTime)}\n`;
       content += `   Status: ${seg.status} | Notes: ${seg.notes}\n\n`;
     });
 
     content += `REQUIRED NEXT ACTIONS CHECKLIST:\n`;
-    (itin.actions_checklist || []).forEach((act, i) => {
+    (itinObj.actions_checklist || []).forEach((act, i) => {
       content += `[${act.completed ? 'X' : ' '}] ${i + 1}. ${act.title}\n`;
       content += `    Category: ${act.category} | Priority: ${act.priority}\n`;
       content += `    Action: ${act.description}\n\n`;
@@ -89,7 +126,7 @@ export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `TripRescue_Revised_Itinerary_${trip.id}.txt`;
+    link.download = `TripRescue_Revised_Itinerary_${tripObj.id || 'plan'}.txt`;
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -108,7 +145,20 @@ export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
     );
   }
 
-  if (error || !itineraryData) {
+  const itin = itineraryData?.itinerary || (itineraryData?.revised_schedule ? itineraryData : null);
+  const trip = itineraryData?.trip || activeTrip || {};
+  const selectedOption = itineraryData?.selectedOption || (activeTrip.recoveryOptions || [])[0] || null;
+
+  if (loading) {
+    return (
+      <div className="bg-white border border-slate-200 rounded-lg p-12 text-center text-xs space-y-2">
+        <div className="w-6 h-6 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+        <p className="text-slate-600 font-medium">Loading approved recovery itinerary...</p>
+      </div>
+    );
+  }
+
+  if (error || !itin) {
     return (
       <div className="bg-white border border-slate-200 rounded-lg p-8 text-center text-xs space-y-3">
         <div className="w-12 h-12 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center mx-auto">
@@ -128,10 +178,7 @@ export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
     );
   }
 
-  const itin = itineraryData.itinerary;
-  const trip = itineraryData.trip;
-  const selectedOption = itineraryData.selectedOption;
-  const checklist = itin.actions_checklist || [];
+  const checklist = itin?.actions_checklist || [];
   const completedCount = checklist.filter(a => a.completed).length;
 
   return (
@@ -141,25 +188,25 @@ export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
         <div>
           <div className="flex items-center space-x-2 text-xs font-semibold text-emerald-800 uppercase tracking-wider mb-1">
             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>Feature 5: Revised Travel Itinerary & Action Execution</span>
+            <span>Revised Travel Itinerary & Action Execution</span>
           </div>
           <h1 className="text-xl font-bold text-slate-900">Approved Recovery Itinerary</h1>
           <p className="text-xs text-slate-500 mt-0.5">
-            Trip: <strong className="text-slate-800">{trip.title}</strong> • Traveller: <strong className="text-slate-800">{trip.traveller_name}</strong>
+            Trip: <strong className="text-slate-800">{trip?.title || activeTrip?.title}</strong> • Traveller: <strong className="text-slate-800">{trip?.traveller_name || activeTrip?.traveller_name}</strong>
           </p>
         </div>
 
         <div className="flex items-center space-x-2 no-print">
           <button
             onClick={handlePrint}
-            className="px-3 py-1.5 border border-slate-300 text-xs font-semibold rounded text-slate-700 bg-white hover:bg-slate-50 flex items-center shadow-xs"
+            className="px-3 py-1.5 border border-slate-300 text-xs font-semibold rounded text-slate-700 bg-white hover:bg-slate-50 flex items-center shadow-xs cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5 mr-1.5 text-slate-500" />
             Print Itinerary
           </button>
           <button
             onClick={handleDownload}
-            className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded flex items-center shadow-xs"
+            className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded flex items-center shadow-xs cursor-pointer"
           >
             <Download className="w-3.5 h-3.5 mr-1.5" />
             Download Summary
@@ -209,7 +256,7 @@ export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
 
               <div className="sm:text-right shrink-0 text-xs">
                 <div className="font-semibold text-slate-800">
-                  {new Date(seg.departureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} → {new Date(seg.arrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  {formatTimeSafe(seg.departureTime)} → {formatTimeSafe(seg.arrivalTime)}
                 </div>
                 <div className="text-[11px] text-slate-500">
                   Fare: ₹{parseFloat(seg.cost || 0).toLocaleString()}
@@ -256,7 +303,7 @@ export default function RevisedItineraryPage({ activeTrip, onNavigate }) {
                     {act.title}
                   </span>
                   <span className="text-[10px] font-mono uppercase px-1.5 py-0.2 bg-slate-100 rounded text-slate-600">
-                    {act.category.replace('_', ' ')}
+                    {act.category?.replace('_', ' ')}
                   </span>
                   <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
                     act.priority === 'HIGH' ? 'bg-rose-100 text-rose-800' : 'bg-slate-100 text-slate-600'

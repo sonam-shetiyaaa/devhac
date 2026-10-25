@@ -1,6 +1,18 @@
 {
   "trips": [
     {
+      "id": "trip-1792934343277",
+      "title": "Pune to Ahmedabad Trade Expo",
+      "traveller_name": "Siddharth Patel",
+      "origin": "Pune (PNQ)",
+      "destination": "Ahmedabad (AMD)",
+      "start_date": "2026-11-28T07:00:00",
+      "end_date": "2026-12-01T20:00:00",
+      "status": "PLANNED",
+      "created_at": "2026-10-25T13:19:03.277Z",
+      "updated_at": "2026-10-25T13:19:03.277Z"
+    },
+    {
       "id": "trip-1792930687952",
       "title": "Hyderabad to Varanasi Spiritual Tour",
       "traveller_name": "Karthik Rao",
@@ -44,7 +56,7 @@
       "destination": "Kochi (COK)",
       "start_date": "2026-11-25T06:00:00",
       "end_date": "2026-11-28T21:00:00",
-      "status": "DISRUPTED",
+      "status": "RECOVERED",
       "created_at": "2026-10-25T12:00:00",
       "updated_at": "2026-10-25T12:30:00"
     }
@@ -92,6 +104,17 @@
       "prefer_direct_transport": true,
       "avoid_overnight_travel": false,
       "critical_activities": "Dashashwamedh Ghat Evening Ganga Aarti",
+      "notes": ""
+    },
+    {
+      "id": "cons-1792934343279",
+      "trip_id": "trip-1792934343277",
+      "max_additional_budget": 5000,
+      "preferred_arrival_deadline": "2026-11-28T19:00:00",
+      "min_connection_buffer_mins": 90,
+      "prefer_direct_transport": true,
+      "avoid_overnight_travel": false,
+      "critical_activities": "Vibrant Gujarat Trade Pavilion",
       "notes": ""
     }
   ],
@@ -315,6 +338,23 @@
       "cost": 5400,
       "currency": "INR",
       "status": "DISRUPTED",
+      "notes": ""
+    },
+    {
+      "id": "book-1792934343279-0",
+      "trip_id": "trip-1792934343277",
+      "segment_order": 1,
+      "type": "TRAIN",
+      "provider": "Vande Bharat Express",
+      "reference_code": "VB-22926",
+      "title": "TRAIN VB-22926: Pune (PNQ) to Ahmedabad (AMD)",
+      "origin_station": "Pune (PNQ)",
+      "destination_station": "Ahmedabad (AMD)",
+      "scheduled_departure": "2026-11-28T07:00:00",
+      "scheduled_arrival": "2026-11-28T19:00:00",
+      "cost": 1850,
+      "currency": "INR",
+      "status": "CONFIRMED",
       "notes": ""
     }
   ],
@@ -750,6 +790,190 @@
       "is_recommended": false,
       "trip_id": "trip-blr-jai-01",
       "disruption_id": "disrupt-blr-jai-01"
+    },
+    {
+      "id": "rec-opt-a-trip-del-cok-03",
+      "option_code": "OPT-A",
+      "title": "Morning Non-stop Priority: Vistara UK-883 (DEL → COK Direct)",
+      "transport_type": "FLIGHT (DIRECT)",
+      "provider": "Vistara Airlines",
+      "route_summary": "New Delhi (DEL T3) → Kochi (COK) [Direct Flight] + Jetty Express Taxi",
+      "departure_time": "2026-11-25T07:45:00",
+      "arrival_time": "2026-11-25T11:00:00",
+      "total_cost": 8200,
+      "additional_cost": 2900,
+      "stops": 0,
+      "availability_status": "Available (3 seats in Premium Economy/Economy)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Critical Cascade Saved: Lands in Kochi at 11:00 AM. Arrives at Alleppey Finshing Point Jetty by 12:30 PM. The luxury houseboat departure at 13:00 PM is 100% saved!",
+      "advantages": [
+        "Protects the ₹16,000 non-refundable Alleppey private houseboat departure",
+        "Arrives in Kochi safely at 11:00 AM before afternoon congestion",
+        "Preserves evening Kathakali cultural show in Fort Kochi",
+        "Within ₹4,000 additional budget"
+      ],
+      "disadvantages": [
+        "Requires immediate re-ticketing at Terminal 3"
+      ],
+      "justification": "Vital recovery: missing the 13:00 houseboat departure forces complete boat cancellation. This option preserves the entire backwaters retreat.",
+      "overall_score": 89,
+      "score_factors": {
+        "time": {
+          "score": 35,
+          "max": 35,
+          "explanation": "Arrives at 11:00 am, 120 mins safely before 01:00 pm deadline."
+        },
+        "budget": {
+          "score": 14,
+          "max": 25,
+          "explanation": "Additional cost of ₹2,900 is within the ₹4,000 limit."
+        },
+        "cascade": {
+          "score": 25,
+          "max": 25,
+          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Permits normal hotel check-in without special late arrival waiver. Successfully preserves \"Alleppey Luxury Houseboat Departure\""
+        },
+        "comfort": {
+          "score": 15,
+          "max": 15,
+          "explanation": "Direct journey with no intermediate airport or station transfers."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": true,
+        "isCriticalActivityPreserved": true,
+        "relaxationOptions": []
+      },
+      "is_recommended": true,
+      "trip_id": "trip-del-cok-03",
+      "disruption_id": "disrupt-del-cok-03",
+      "is_approved": true
+    },
+    {
+      "id": "rec-opt-c-trip-del-cok-03",
+      "option_code": "OPT-C",
+      "title": "Next-Day Early Morning Flight: Air India AI-880 Direct",
+      "transport_type": "FLIGHT (NEXT DAY)",
+      "provider": "Air India",
+      "route_summary": "New Delhi (DEL T3) → Kochi (COK) [Departs Tomorrow 06:15 AM]",
+      "departure_time": "2026-11-26T06:15:00",
+      "arrival_time": "2026-11-26T09:30:00",
+      "total_cost": 5300,
+      "additional_cost": 0,
+      "stops": 0,
+      "availability_status": "Available via Carrier Free Reschedule",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Severe Disruption: Completely loses Day 1 of Kerala trip. Day 1 hotel night forfeited.",
+      "advantages": [
+        "Zero fare cost under airline weather waiver"
+      ],
+      "disadvantages": [
+        "Arrives 24 hours late",
+        "Day 1 accommodation and activities completely forfeited"
+      ],
+      "justification": "Only suitable for travelers with zero out-of-pocket budget flexibility.",
+      "overall_score": 75,
+      "score_factors": {
+        "time": {
+          "score": 10,
+          "max": 35,
+          "explanation": "Arrives 1230 mins after preferred deadline (01:00 pm) [-25 pts]"
+        },
+        "budget": {
+          "score": 25,
+          "max": 25,
+          "explanation": "Zero additional cost (no fare differential)."
+        },
+        "cascade": {
+          "score": 25,
+          "max": 25,
+          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Permits normal hotel check-in without special late arrival waiver. Successfully preserves \"Alleppey Luxury Houseboat Departure\""
+        },
+        "comfort": {
+          "score": 15,
+          "max": 15,
+          "explanation": "Direct journey with no intermediate airport or station transfers."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": false,
+        "isCriticalActivityPreserved": true,
+        "relaxationOptions": [
+          {
+            "type": "RELAX_DEADLINE",
+            "title": "Extend Arrival Deadline",
+            "description": "Accept arrival at 09:30 am instead of preferred 01:00 pm."
+          }
+        ]
+      },
+      "is_recommended": false,
+      "trip_id": "trip-del-cok-03",
+      "disruption_id": "disrupt-del-cok-03"
+    },
+    {
+      "id": "rec-opt-b-trip-del-cok-03",
+      "option_code": "OPT-B",
+      "title": "Connecting Flight via Bengaluru: IndiGo 6E-2115 + 6E-442",
+      "transport_type": "FLIGHT (1-STOP)",
+      "provider": "IndiGo Airlines",
+      "route_summary": "DEL → BLR (Layover 75m) → Kochi (COK)",
+      "departure_time": "2026-11-25T08:15:00",
+      "arrival_time": "2026-11-25T14:45:00",
+      "total_cost": 6700,
+      "additional_cost": 1400,
+      "stops": 1,
+      "availability_status": "Available (Economy)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Houseboat Lost / Land Reroute Required: Arrives at Kochi at 14:45 PM. Misses 13:00 houseboat cruise. Requires moving night 1 stay to a mainland resort in Kumarakom.",
+      "advantages": [
+        "Low additional cost of ₹1,400",
+        "Still arrives in Kerala on the same afternoon"
+      ],
+      "disadvantages": [
+        "Alleppey Houseboat day cruise missed (anchors at 13:00)",
+        "Requires hotel booking modification"
+      ],
+      "justification": "Feasible secondary choice if traveller is willing to stay at a land resort instead of the cruise.",
+      "overall_score": 64,
+      "score_factors": {
+        "time": {
+          "score": 14,
+          "max": 35,
+          "explanation": "Arrives 105 mins after preferred deadline (01:00 pm) [-21 pts]"
+        },
+        "budget": {
+          "score": 20,
+          "max": 25,
+          "explanation": "Additional cost of ₹1,400 is within the ₹4,000 limit."
+        },
+        "cascade": {
+          "score": 20,
+          "max": 25,
+          "explanation": "Maintains transit connection with verified connection buffer. Permits normal hotel check-in without special late arrival waiver. Successfully preserves \"Alleppey Luxury Houseboat Departure\""
+        },
+        "comfort": {
+          "score": 10,
+          "max": 15,
+          "explanation": "One connecting segment with comfortable layover."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": false,
+        "isCriticalActivityPreserved": true,
+        "relaxationOptions": [
+          {
+            "type": "RELAX_DEADLINE",
+            "title": "Extend Arrival Deadline",
+            "description": "Accept arrival at 02:45 pm instead of preferred 01:00 pm."
+          }
+        ]
+      },
+      "is_recommended": false,
+      "trip_id": "trip-del-cok-03",
+      "disruption_id": "disrupt-del-cok-03"
     }
   ],
   "revised_itineraries": [
@@ -814,6 +1038,100 @@
         {
           "id": "act-05",
           "title": "Verify scheduled event booking",
+          "category": "ACTIVITY_ACTION",
+          "description": "Confirm ticket status and venue admission requirements.",
+          "priority": "LOW",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "itin-1792934436646",
+      "trip_id": "trip-del-cok-03",
+      "selected_recovery_option_id": "rec-opt-a-trip-del-cok-03",
+      "generated_at": "2026-10-25T13:20:36.646Z",
+      "summary": "Revised recovery plan confirmed using Option OPT-A (Morning Non-stop Priority: Vistara UK-883 (DEL → COK Direct)). Reached Kochi (COK) safely, healed whole-trip dependencies, and generated 5 actionable next steps.",
+      "revised_schedule": [
+        {
+          "segmentId": "rev-seg-01",
+          "type": "FLIGHT (DIRECT)",
+          "provider": "Vistara Airlines",
+          "title": "Morning Non-stop Priority: Vistara UK-883 (DEL → COK Direct)",
+          "referenceCode": "OPT-A",
+          "originStation": "New Delhi (DEL)",
+          "destinationStation": "Kochi (COK)",
+          "departureTime": "2026-11-25T07:45:00",
+          "arrivalTime": "2026-11-25T11:00:00",
+          "status": "CONFIRMED_ALTERNATIVE",
+          "notes": "Approved whole-trip recovery segment connecting New Delhi (DEL) to Kochi (COK).",
+          "cost": 8200
+        },
+        {
+          "segmentId": "rev-seg-02",
+          "type": "HOTEL",
+          "provider": "Spice Routes Luxury Houseboats",
+          "title": "Private Premium Houseboat Cruise & Overnight Stay (Alleppey)",
+          "referenceCode": "HB-KERALA-33",
+          "originStation": "Alleppey Backwaters, Kerala",
+          "destinationStation": "Alleppey Backwaters, Kerala",
+          "departureTime": "2026-11-25T12:30:00",
+          "arrivalTime": "2026-11-26T09:30:00",
+          "status": "UPDATED",
+          "notes": "Early arrival: Relaxed check-in available upon arrival.",
+          "cost": 16800
+        },
+        {
+          "segmentId": "rev-seg-03",
+          "type": "ACTIVITY",
+          "provider": "Kerala Kathakali Centre Fort Kochi",
+          "title": "Traditional Kathakali Classical Performance & Makeup Demo",
+          "referenceCode": "KATHA-EVE-12",
+          "originStation": "Fort Kochi Kathakali Centre",
+          "destinationStation": "Fort Kochi Kathakali Centre",
+          "departureTime": "2026-11-25T18:30:00",
+          "arrivalTime": "2026-11-25T20:30:00",
+          "status": "PRESERVED",
+          "notes": "Preserved at original scheduled slot.",
+          "cost": 800
+        }
+      ],
+      "remaining_conflicts": [],
+      "actions_checklist": [
+        {
+          "id": "act-01",
+          "title": "Book recommended travel segment (Morning Non-stop Priority: Vistara UK-883 (DEL → COK Direct))",
+          "category": "BOOKING_ACTION",
+          "description": "Reserve your seat with Vistara Airlines departing at 07:45 am. (Fare: ₹8,200).",
+          "priority": "HIGH",
+          "completed": false
+        },
+        {
+          "id": "act-02",
+          "title": "Claim full refund for cancelled Air India booking",
+          "category": "REFUND_ACTION",
+          "description": "Submit an automated compensation claim with carrier reference to retrieve full ticket credit or reimbursement.",
+          "priority": "HIGH",
+          "completed": false
+        },
+        {
+          "id": "act-03",
+          "title": "Cancel or adjust intermediate transit reservations",
+          "category": "TRANSIT_ACTION",
+          "description": "Cancel unused connecting legs before departure to maximize your refund.",
+          "priority": "MEDIUM",
+          "completed": false
+        },
+        {
+          "id": "act-04",
+          "title": "Notify Spice Routes Luxury Houseboats of revised check-in schedule",
+          "category": "HOTEL_ACTION",
+          "description": "Alert front desk reception of your expected check-in time around 12:00. Reference booking HB-KERALA-33.",
+          "priority": "MEDIUM",
+          "completed": false
+        },
+        {
+          "id": "act-05",
+          "title": "Verify Traditional Kathakali Classical Performance & Makeup Demo booking",
           "category": "ACTIVITY_ACTION",
           "description": "Confirm ticket status and venue admission requirements.",
           "priority": "LOW",

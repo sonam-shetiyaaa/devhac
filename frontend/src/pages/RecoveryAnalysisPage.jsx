@@ -68,7 +68,9 @@ export default function RecoveryAnalysisPage({ activeTrip, onNavigate, onPlanCon
     try {
       const res = await confirmTripRecovery(activeTrip.id, optionId);
       if (res.success) {
-        if (onPlanConfirmed) onPlanConfirmed(res.data.itinerary);
+        if (onPlanConfirmed) {
+          await onPlanConfirmed(res.data?.itinerary || res.data);
+        }
         onNavigate('revised-itinerary');
       }
     } catch (err) {

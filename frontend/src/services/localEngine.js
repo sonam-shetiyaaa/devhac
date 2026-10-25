@@ -1383,14 +1383,39 @@ export const localEngine = {
     }
 
     saveLocalStore(store);
-    return { success: true, data: newItinerary };
+    return {
+      success: true,
+      data: {
+        tripId,
+        optionId,
+        itinerary: newItinerary,
+      }
+    };
   },
 
   getRevisedItinerary(tripId) {
     const store = getLocalStore();
+    const trip = store.trips.find(t => t.id === tripId);
     const itinerary = store.revised_itineraries.find(i => i.trip_id === tripId);
     if (!itinerary) return { success: false, error: 'No revised itinerary confirmed yet' };
-    return { success: true, data: itinerary };
+    const selectedOption = store.recovery_options.find(r => r.id === itinerary.selected_recovery_option_id)
+      || store.recovery_options[0]
+      || null;
+
+    return {
+      success: true,
+      data: {
+        trip: trip || {
+          id: tripId,
+          title: 'Recovered Journey',
+          traveller_name: 'Traveller',
+          origin: '',
+          destination: '',
+        },
+        itinerary,
+        selectedOption,
+      }
+    };
   },
 
   toggleAction(tripId, actionId, completed) {
@@ -1402,8 +1427,9 @@ export const localEngine = {
         act.completed = completed;
         saveLocalStore(store);
       }
+      return { success: true, data: itinerary.actions_checklist };
     }
-    return { success: true };
+    return { success: true, data: [] };
   },
 
   resetDemo() {
