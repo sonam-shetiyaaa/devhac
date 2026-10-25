@@ -32,7 +32,7 @@
       "destination": "Jaipur (JAI)",
       "start_date": "2026-11-15T07:00:00",
       "end_date": "2026-11-18T20:00:00",
-      "status": "DISRUPTED",
+      "status": "RECOVERED",
       "created_at": "2026-10-25T10:00:00",
       "updated_at": "2026-10-25T10:15:00"
     },
@@ -593,205 +593,6 @@
       "is_approved": true
     },
     {
-      "id": "rec-opt-a-trip-blr-jai-01",
-      "option_code": "OPT-A",
-      "title": "Priority Direct Re-route: Air India AI-840 (Direct BLR → JAI)",
-      "transport_type": "FLIGHT (DIRECT)",
-      "provider": "Air India",
-      "route_summary": "Bengaluru (BLR) → Jaipur (JAI) [Direct Flight]",
-      "departure_time": "2026-11-15T11:15:00",
-      "arrival_time": "2026-11-15T13:45:00",
-      "total_cost": 9000,
-      "additional_cost": 3200,
-      "stops": 0,
-      "availability_status": "Available (4 seats in Economy)",
-      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
-      "impact_on_connections": "Complete Whole-Trip Recovery: Bypasses Delhi connection altogether. Arrives in Jaipur at 13:45 PM (5 hours ahead of original schedule). Train ticket can be refunded, hotel check-in is early/relaxed, and Amber Fort evening tour is 100% preserved.",
-      "advantages": [
-        "Direct non-stop flight eliminating transit risk in Delhi",
-        "Arrives safely at 13:45 PM, well ahead of the 21:00 deadline",
-        "Preserves Amber Fort Evening Show at 20:30 without reschedule",
-        "Additional cost of ₹3,200 is within the ₹4,500 budget limit",
-        "Eligible for ₹1,650 refund on unused Vande Bharat train ticket"
-      ],
-      "disadvantages": [
-        "₹3,200 out-of-pocket payment required before airline claim reimbursement"
-      ],
-      "justification": "Recommended as the optimal whole-trip recovery: it bypasses the broken Delhi transit entirely, gets the traveller to Jaipur 5 hours early, and protects both hotel check-in and the critical evening cultural event within traveller budget.",
-      "overall_score": 89,
-      "score_factors": {
-        "time": {
-          "score": 35,
-          "max": 35,
-          "explanation": "Arrives at 01:45 pm, 435 mins safely before 09:00 pm deadline."
-        },
-        "budget": {
-          "score": 14,
-          "max": 25,
-          "explanation": "Additional cost of ₹3,200 is within the ₹4,500 limit."
-        },
-        "cascade": {
-          "score": 25,
-          "max": 25,
-          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Permits normal hotel check-in without special late arrival waiver. Successfully preserves \"Amber Fort Evening Sound & Light Show\""
-        },
-        "comfort": {
-          "score": 15,
-          "max": 15,
-          "explanation": "Direct journey with no intermediate airport or station transfers."
-        }
-      },
-      "constraints_audit": {
-        "isBudgetCompliant": true,
-        "isDeadlineCompliant": true,
-        "isCriticalActivityPreserved": true,
-        "relaxationOptions": []
-      },
-      "is_recommended": true,
-      "trip_id": "trip-blr-jai-01",
-      "disruption_id": "disrupt-blr-jai-01"
-    },
-    {
-      "id": "rec-opt-b-trip-blr-jai-01",
-      "option_code": "OPT-B",
-      "title": "Protected Connection: Vistara UK-812 + Evening Shatabdi Express 12015",
-      "transport_type": "FLIGHT + TRAIN (MULTIMODAL)",
-      "provider": "Vistara & Indian Railways",
-      "route_summary": "BLR → DEL (Flight) + Delhi → Jaipur (Evening Shatabdi Train)",
-      "departure_time": "2026-11-15T09:30:00",
-      "arrival_time": "2026-11-15T22:40:00",
-      "total_cost": 7600,
-      "additional_cost": 1800,
-      "stops": 1,
-      "availability_status": "Available (Executive & AC Chair Car)",
-      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
-      "impact_on_connections": "Partial Cascade Recovery: Replaces flight to Delhi with Vistara UK-812 (lands 12:15). Provides 5h 35m transfer window to catch Evening Shatabdi 12015 at 17:50 PM. However, arrival in Jaipur is 22:40 PM, causing the Amber Fort show to be missed and requiring late check-in at ITC Rajputana.",
-      "advantages": [
-        "Moderate additional cost of only ₹1,800",
-        "Generous 5.5 hour connection buffer eliminates transfer stress in Delhi",
-        "Retains railway scenic travel leg into Jaipur"
-      ],
-      "disadvantages": [
-        "Arrives at 22:40 PM (after preferred 21:00 deadline)",
-        "Amber Fort 20:30 PM show is missed and must be rescheduled",
-        "Requires alerting hotel reception of late check-in past 22:00"
-      ],
-      "justification": "Viable secondary alternative for budget-conscious travellers willing to sacrifice the evening cultural activity to save ₹1,400.",
-      "overall_score": 58,
-      "score_factors": {
-        "time": {
-          "score": 14,
-          "max": 35,
-          "explanation": "Arrives 100 mins after preferred deadline (09:00 pm) [-21 pts]"
-        },
-        "budget": {
-          "score": 19,
-          "max": 25,
-          "explanation": "Additional cost of ₹1,800 is within the ₹4,500 limit."
-        },
-        "cascade": {
-          "score": 15,
-          "max": 25,
-          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Allows same-day hotel check-in with standard late arrival notification. Cannot make \"Amber Fort Evening Sound & Light Show\" at scheduled time (requires reschedule)"
-        },
-        "comfort": {
-          "score": 10,
-          "max": 15,
-          "explanation": "One connecting segment with comfortable layover."
-        }
-      },
-      "constraints_audit": {
-        "isBudgetCompliant": true,
-        "isDeadlineCompliant": false,
-        "isCriticalActivityPreserved": false,
-        "relaxationOptions": [
-          {
-            "type": "RELAX_DEADLINE",
-            "title": "Extend Arrival Deadline",
-            "description": "Accept arrival at 10:40 pm instead of preferred 09:00 pm."
-          },
-          {
-            "type": "RESCHEDULE_ACTIVITY",
-            "title": "Reschedule Important Activity",
-            "description": "Move \"Amber Fort Evening Sound & Light Show\" to tomorrow morning at 09:30 AM."
-          }
-        ]
-      },
-      "is_recommended": false,
-      "trip_id": "trip-blr-jai-01",
-      "disruption_id": "disrupt-blr-jai-01"
-    },
-    {
-      "id": "rec-opt-c-trip-blr-jai-01",
-      "option_code": "OPT-C",
-      "title": "Economy Reroute: Afternoon Flight + Intercity AC Electric Sleeper Coach",
-      "transport_type": "FLIGHT + BUS (MULTIMODAL)",
-      "provider": "SpiceJet & Zingbus Intercity",
-      "route_summary": "BLR → DEL (Flight SG-192) + Delhi Dhaula Kuan → Jaipur (Express Highway Coach)",
-      "departure_time": "2026-11-15T13:00:00",
-      "arrival_time": "2026-11-15T23:15:00",
-      "total_cost": 6400,
-      "additional_cost": 600,
-      "stops": 1,
-      "availability_status": "Available (High capacity)",
-      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
-      "impact_on_connections": "Budget Priority Recovery: Minimizes extra cash outlay to only ₹600. However, arrival is delayed to 23:15 PM. Breaks evening events, causes late arrival fatigue, and risks highway traffic delays.",
-      "advantages": [
-        "Lowest additional cost: only ₹600 additional spending",
-        "Leaves Bengaluru at a relaxed afternoon time (13:00 PM)"
-      ],
-      "disadvantages": [
-        "Late arrival at 23:15 PM breaches the 21:00 arrival constraint",
-        "Amber Fort evening event missed",
-        "Transfer from Terminal 3 to highway pickup point involves road cab",
-        "Higher travel fatigue"
-      ],
-      "justification": "Suitable only if the traveller explicitly prioritizes budget minimization above all other constraints.",
-      "overall_score": 54,
-      "score_factors": {
-        "time": {
-          "score": 10,
-          "max": 35,
-          "explanation": "Arrives 135 mins after preferred deadline (09:00 pm) [-25 pts]"
-        },
-        "budget": {
-          "score": 23,
-          "max": 25,
-          "explanation": "Additional cost of ₹600 is within the ₹4,500 limit."
-        },
-        "cascade": {
-          "score": 11,
-          "max": 25,
-          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Requires hotel stay modification or risk of first night loss. Cannot make \"Amber Fort Evening Sound & Light Show\" at scheduled time (requires reschedule)"
-        },
-        "comfort": {
-          "score": 10,
-          "max": 15,
-          "explanation": "One connecting segment with comfortable layover."
-        }
-      },
-      "constraints_audit": {
-        "isBudgetCompliant": true,
-        "isDeadlineCompliant": false,
-        "isCriticalActivityPreserved": false,
-        "relaxationOptions": [
-          {
-            "type": "RELAX_DEADLINE",
-            "title": "Extend Arrival Deadline",
-            "description": "Accept arrival at 11:15 pm instead of preferred 09:00 pm."
-          },
-          {
-            "type": "RESCHEDULE_ACTIVITY",
-            "title": "Reschedule Important Activity",
-            "description": "Move \"Amber Fort Evening Sound & Light Show\" to tomorrow morning at 09:30 AM."
-          }
-        ]
-      },
-      "is_recommended": false,
-      "trip_id": "trip-blr-jai-01",
-      "disruption_id": "disrupt-blr-jai-01"
-    },
-    {
       "id": "rec-opt-a-trip-del-cok-03",
       "option_code": "OPT-A",
       "title": "Morning Non-stop Priority: Vistara UK-883 (DEL → COK Direct)",
@@ -974,6 +775,206 @@
       "is_recommended": false,
       "trip_id": "trip-del-cok-03",
       "disruption_id": "disrupt-del-cok-03"
+    },
+    {
+      "id": "rec-opt-a-trip-blr-jai-01",
+      "option_code": "OPT-A",
+      "title": "Priority Direct Re-route: Air India AI-840 (Direct BLR → JAI)",
+      "transport_type": "FLIGHT (DIRECT)",
+      "provider": "Air India",
+      "route_summary": "Bengaluru (BLR) → Jaipur (JAI) [Direct Flight]",
+      "departure_time": "2026-11-15T11:15:00",
+      "arrival_time": "2026-11-15T13:45:00",
+      "total_cost": 9000,
+      "additional_cost": 3200,
+      "stops": 0,
+      "availability_status": "Available (4 seats in Economy)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Complete Whole-Trip Recovery: Bypasses Delhi connection altogether. Arrives in Jaipur at 13:45 PM (5 hours ahead of original schedule). Train ticket can be refunded, hotel check-in is early/relaxed, and Amber Fort evening tour is 100% preserved.",
+      "advantages": [
+        "Direct non-stop flight eliminating transit risk in Delhi",
+        "Arrives safely at 13:45 PM, well ahead of the 21:00 deadline",
+        "Preserves Amber Fort Evening Show at 20:30 without reschedule",
+        "Additional cost of ₹3,200 is within the ₹4,500 budget limit",
+        "Eligible for ₹1,650 refund on unused Vande Bharat train ticket"
+      ],
+      "disadvantages": [
+        "₹3,200 out-of-pocket payment required before airline claim reimbursement"
+      ],
+      "justification": "Recommended as the optimal whole-trip recovery: it bypasses the broken Delhi transit entirely, gets the traveller to Jaipur 5 hours early, and protects both hotel check-in and the critical evening cultural event within traveller budget.",
+      "overall_score": 89,
+      "score_factors": {
+        "time": {
+          "score": 35,
+          "max": 35,
+          "explanation": "Arrives at 01:45 pm, 435 mins safely before 09:00 pm deadline."
+        },
+        "budget": {
+          "score": 14,
+          "max": 25,
+          "explanation": "Additional cost of ₹3,200 is within the ₹4,500 limit."
+        },
+        "cascade": {
+          "score": 25,
+          "max": 25,
+          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Permits normal hotel check-in without special late arrival waiver. Successfully preserves \"Amber Fort Evening Sound & Light Show\""
+        },
+        "comfort": {
+          "score": 15,
+          "max": 15,
+          "explanation": "Direct journey with no intermediate airport or station transfers."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": true,
+        "isCriticalActivityPreserved": true,
+        "relaxationOptions": []
+      },
+      "is_recommended": true,
+      "trip_id": "trip-blr-jai-01",
+      "disruption_id": "disrupt-blr-jai-01",
+      "is_approved": true
+    },
+    {
+      "id": "rec-opt-b-trip-blr-jai-01",
+      "option_code": "OPT-B",
+      "title": "Protected Connection: Vistara UK-812 + Evening Shatabdi Express 12015",
+      "transport_type": "FLIGHT + TRAIN (MULTIMODAL)",
+      "provider": "Vistara & Indian Railways",
+      "route_summary": "BLR → DEL (Flight) + Delhi → Jaipur (Evening Shatabdi Train)",
+      "departure_time": "2026-11-15T09:30:00",
+      "arrival_time": "2026-11-15T22:40:00",
+      "total_cost": 7600,
+      "additional_cost": 1800,
+      "stops": 1,
+      "availability_status": "Available (Executive & AC Chair Car)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Partial Cascade Recovery: Replaces flight to Delhi with Vistara UK-812 (lands 12:15). Provides 5h 35m transfer window to catch Evening Shatabdi 12015 at 17:50 PM. However, arrival in Jaipur is 22:40 PM, causing the Amber Fort show to be missed and requiring late check-in at ITC Rajputana.",
+      "advantages": [
+        "Moderate additional cost of only ₹1,800",
+        "Generous 5.5 hour connection buffer eliminates transfer stress in Delhi",
+        "Retains railway scenic travel leg into Jaipur"
+      ],
+      "disadvantages": [
+        "Arrives at 22:40 PM (after preferred 21:00 deadline)",
+        "Amber Fort 20:30 PM show is missed and must be rescheduled",
+        "Requires alerting hotel reception of late check-in past 22:00"
+      ],
+      "justification": "Viable secondary alternative for budget-conscious travellers willing to sacrifice the evening cultural activity to save ₹1,400.",
+      "overall_score": 58,
+      "score_factors": {
+        "time": {
+          "score": 14,
+          "max": 35,
+          "explanation": "Arrives 100 mins after preferred deadline (09:00 pm) [-21 pts]"
+        },
+        "budget": {
+          "score": 19,
+          "max": 25,
+          "explanation": "Additional cost of ₹1,800 is within the ₹4,500 limit."
+        },
+        "cascade": {
+          "score": 15,
+          "max": 25,
+          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Allows same-day hotel check-in with standard late arrival notification. Cannot make \"Amber Fort Evening Sound & Light Show\" at scheduled time (requires reschedule)"
+        },
+        "comfort": {
+          "score": 10,
+          "max": 15,
+          "explanation": "One connecting segment with comfortable layover."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": false,
+        "isCriticalActivityPreserved": false,
+        "relaxationOptions": [
+          {
+            "type": "RELAX_DEADLINE",
+            "title": "Extend Arrival Deadline",
+            "description": "Accept arrival at 10:40 pm instead of preferred 09:00 pm."
+          },
+          {
+            "type": "RESCHEDULE_ACTIVITY",
+            "title": "Reschedule Important Activity",
+            "description": "Move \"Amber Fort Evening Sound & Light Show\" to tomorrow morning at 09:30 AM."
+          }
+        ]
+      },
+      "is_recommended": false,
+      "trip_id": "trip-blr-jai-01",
+      "disruption_id": "disrupt-blr-jai-01"
+    },
+    {
+      "id": "rec-opt-c-trip-blr-jai-01",
+      "option_code": "OPT-C",
+      "title": "Economy Reroute: Afternoon Flight + Intercity AC Electric Sleeper Coach",
+      "transport_type": "FLIGHT + BUS (MULTIMODAL)",
+      "provider": "SpiceJet & Zingbus Intercity",
+      "route_summary": "BLR → DEL (Flight SG-192) + Delhi Dhaula Kuan → Jaipur (Express Highway Coach)",
+      "departure_time": "2026-11-15T13:00:00",
+      "arrival_time": "2026-11-15T23:15:00",
+      "total_cost": 6400,
+      "additional_cost": 600,
+      "stops": 1,
+      "availability_status": "Available (High capacity)",
+      "data_source": "DEMONSTRATION_DATA (Simulated for Evaluation)",
+      "impact_on_connections": "Budget Priority Recovery: Minimizes extra cash outlay to only ₹600. However, arrival is delayed to 23:15 PM. Breaks evening events, causes late arrival fatigue, and risks highway traffic delays.",
+      "advantages": [
+        "Lowest additional cost: only ₹600 additional spending",
+        "Leaves Bengaluru at a relaxed afternoon time (13:00 PM)"
+      ],
+      "disadvantages": [
+        "Late arrival at 23:15 PM breaches the 21:00 arrival constraint",
+        "Amber Fort evening event missed",
+        "Transfer from Terminal 3 to highway pickup point involves road cab",
+        "Higher travel fatigue"
+      ],
+      "justification": "Suitable only if the traveller explicitly prioritizes budget minimization above all other constraints.",
+      "overall_score": 54,
+      "score_factors": {
+        "time": {
+          "score": 10,
+          "max": 35,
+          "explanation": "Arrives 135 mins after preferred deadline (09:00 pm) [-25 pts]"
+        },
+        "budget": {
+          "score": 23,
+          "max": 25,
+          "explanation": "Additional cost of ₹600 is within the ₹4,500 limit."
+        },
+        "cascade": {
+          "score": 11,
+          "max": 25,
+          "explanation": "Eliminates risky Delhi transfer by flying direct to destination. Requires hotel stay modification or risk of first night loss. Cannot make \"Amber Fort Evening Sound & Light Show\" at scheduled time (requires reschedule)"
+        },
+        "comfort": {
+          "score": 10,
+          "max": 15,
+          "explanation": "One connecting segment with comfortable layover."
+        }
+      },
+      "constraints_audit": {
+        "isBudgetCompliant": true,
+        "isDeadlineCompliant": false,
+        "isCriticalActivityPreserved": false,
+        "relaxationOptions": [
+          {
+            "type": "RELAX_DEADLINE",
+            "title": "Extend Arrival Deadline",
+            "description": "Accept arrival at 11:15 pm instead of preferred 09:00 pm."
+          },
+          {
+            "type": "RESCHEDULE_ACTIVITY",
+            "title": "Reschedule Important Activity",
+            "description": "Move \"Amber Fort Evening Sound & Light Show\" to tomorrow morning at 09:30 AM."
+          }
+        ]
+      },
+      "is_recommended": false,
+      "trip_id": "trip-blr-jai-01",
+      "disruption_id": "disrupt-blr-jai-01"
     }
   ],
   "revised_itineraries": [
@@ -1132,6 +1133,100 @@
         {
           "id": "act-05",
           "title": "Verify Traditional Kathakali Classical Performance & Makeup Demo booking",
+          "category": "ACTIVITY_ACTION",
+          "description": "Confirm ticket status and venue admission requirements.",
+          "priority": "LOW",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "itin-1792934969715",
+      "trip_id": "trip-blr-jai-01",
+      "selected_recovery_option_id": "rec-opt-a-trip-blr-jai-01",
+      "generated_at": "2026-10-25T13:29:29.715Z",
+      "summary": "Revised recovery plan confirmed using Option OPT-A (Priority Direct Re-route: Air India AI-840 (Direct BLR → JAI)). Reached Jaipur (JAI) safely, healed whole-trip dependencies, and generated 5 actionable next steps.",
+      "revised_schedule": [
+        {
+          "segmentId": "rev-seg-01",
+          "type": "FLIGHT (DIRECT)",
+          "provider": "Air India",
+          "title": "Priority Direct Re-route: Air India AI-840 (Direct BLR → JAI)",
+          "referenceCode": "OPT-A",
+          "originStation": "Bengaluru (BLR)",
+          "destinationStation": "Jaipur (JAI)",
+          "departureTime": "2026-11-15T11:15:00",
+          "arrivalTime": "2026-11-15T13:45:00",
+          "status": "CONFIRMED_ALTERNATIVE",
+          "notes": "Approved whole-trip recovery segment connecting Bengaluru (BLR) to Jaipur (JAI).",
+          "cost": 9000
+        },
+        {
+          "segmentId": "rev-seg-02",
+          "type": "HOTEL",
+          "provider": "ITC Rajputana, A Luxury Collection Hotel",
+          "title": "Hotel Stay: ITC Rajputana Deluxe Room (3 Nights)",
+          "referenceCode": "ITC-JAI-8831",
+          "originStation": "Palace Road, Jaipur",
+          "destinationStation": "Palace Road, Jaipur",
+          "departureTime": "2026-11-15T19:30:00",
+          "arrivalTime": "2026-11-18T11:00:00",
+          "status": "UPDATED",
+          "notes": "Early arrival: Relaxed check-in available upon arrival.",
+          "cost": 18500
+        },
+        {
+          "segmentId": "rev-seg-03",
+          "type": "ACTIVITY",
+          "provider": "Rajasthan Tourism Dev Corp (RTDC)",
+          "title": "Amber Fort Evening Sound & Light Show (English Show)",
+          "referenceCode": "AMBER-EVE-44",
+          "originStation": "Amber Fort, Devisinghpura, Jaipur",
+          "destinationStation": "Amber Fort, Devisinghpura, Jaipur",
+          "departureTime": "2026-11-15T20:30:00",
+          "arrivalTime": "2026-11-15T21:45:00",
+          "status": "PRESERVED",
+          "notes": "Preserved at original scheduled slot.",
+          "cost": 950
+        }
+      ],
+      "remaining_conflicts": [],
+      "actions_checklist": [
+        {
+          "id": "act-01",
+          "title": "Book recommended travel segment (Priority Direct Re-route: Air India AI-840 (Direct BLR → JAI))",
+          "category": "BOOKING_ACTION",
+          "description": "Reserve your seat with Air India departing at 11:15 am. (Fare: ₹9,000).",
+          "priority": "HIGH",
+          "completed": false
+        },
+        {
+          "id": "act-02",
+          "title": "Claim full refund for cancelled IndiGo Airlines booking",
+          "category": "REFUND_ACTION",
+          "description": "Submit an automated compensation claim with carrier reference to retrieve full ticket credit or reimbursement.",
+          "priority": "HIGH",
+          "completed": false
+        },
+        {
+          "id": "act-03",
+          "title": "Cancel or adjust intermediate transit reservations",
+          "category": "TRANSIT_ACTION",
+          "description": "Cancel unused connecting legs before departure to maximize your refund.",
+          "priority": "MEDIUM",
+          "completed": false
+        },
+        {
+          "id": "act-04",
+          "title": "Notify ITC Rajputana, A Luxury Collection Hotel of revised check-in schedule",
+          "category": "HOTEL_ACTION",
+          "description": "Alert front desk reception of your expected check-in time around 14:00. Reference booking ITC-JAI-8831.",
+          "priority": "MEDIUM",
+          "completed": false
+        },
+        {
+          "id": "act-05",
+          "title": "Verify Amber Fort Evening Sound & Light Show (English Show) booking",
           "category": "ACTIVITY_ACTION",
           "description": "Confirm ticket status and venue admission requirements.",
           "priority": "LOW",
